@@ -61,7 +61,8 @@ export const CTAScene: React.FC<CTASceneProps> = ({ config, pricing, theme, bran
         <TypewriterText
           text={config.headline}
           delay={5}
-          speed={2.8}
+          durationInFrames={28}
+          effect="letter-pop"
           color={theme.textColor}
           fontSize={50}
           fontWeight={900}

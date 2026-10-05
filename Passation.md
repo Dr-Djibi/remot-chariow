@@ -63,7 +63,9 @@ Exemple :
 ---
 
 ## Fichiers audio
-Les pistes audio sont optionnelles mais recommandées. Le format attendu est compatible avec Remotion via `public/audio/`.
+Pour utiliser une voix off personnelle, déposer le MP3 ou WAV dans `public/audio/`, puis remplacer `audio/voix-off-fr.mp3` par son nom dans `src/data/currentProduct.json` (`audio.voiceover.src`). La piste démarre à 0 s; enregistrer une narration adaptée aux 20 secondes du spot. Le volume se règle avec `audio.voiceover.volume`.
+
+Les effets sonores restent dans `audio.soundEffects`; chaque piste utilise un chemin relatif à `public/`, un volume et un instant de déclenchement (`atSeconds`).
 
 Exemple de configuration :
 

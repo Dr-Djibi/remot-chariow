@@ -5,6 +5,7 @@ import { BackgroundFX } from './UI/BackgroundFX';
 import { MotionBackground } from './UI/MotionBackground';
 import { ThreatGlobe } from './UI/ThreatGlobe';
 import { TextOverlay } from './UI/TextOverlay';
+import { TypewriterText } from './UI/TypewriterText';
 
 interface BenefitsSceneProps {
   config: BenefitsSceneConfig;
@@ -36,9 +37,11 @@ export const BenefitsScene: React.FC<BenefitsSceneProps> = ({ config, theme }) =
         <ThreatGlobe size={220} />
       </div>
 
-      <TextOverlay
+      <TypewriterText
         text={config.title}
         delay={0}
+        durationInFrames={24}
+        effect="word-rise"
         color={theme.textColor}
         fontSize={48}
         fontWeight={800}
@@ -78,16 +81,24 @@ export const BenefitsScene: React.FC<BenefitsSceneProps> = ({ config, theme }) =
                 backdropFilter: 'blur(4px)',
               }}
             >
-              <h3
+              <div
                 style={{
-                  margin: 0,
                   color: theme.primaryColor,
-                  fontSize: '26px',
-                  fontWeight: 'bold',
+                  fontSize: 26,
+                  fontWeight: 800,
                 }}
               >
-                {benefit.title}
-              </h3>
+                <TypewriterText
+                  text={benefit.title}
+                  delay={delay}
+                  durationInFrames={18}
+                  effect="letter-pop"
+                  color={theme.primaryColor}
+                  fontSize={26}
+                  fontWeight={800}
+                  textAlign="left"
+                />
+              </div>
               <p
                 style={{
                   margin: '6px 0 0 0',

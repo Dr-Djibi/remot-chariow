@@ -31,8 +31,9 @@ export const SolutionScene: React.FC<SolutionSceneProps> = ({ config, cover, pri
       <BackgroundFX accentColor={theme.accentColor} primaryColor={theme.primaryColor} backgroundColor={theme.backgroundColor} />
       <TypewriterText
         text={config.title}
-        delay={8}
-        speed={3}
+        delay={0}
+        durationInFrames={24}
+        effect="word-rise"
         color={theme.primaryColor}
         fontSize={56}
         fontWeight={900}
@@ -40,7 +41,7 @@ export const SolutionScene: React.FC<SolutionSceneProps> = ({ config, cover, pri
       />
 
       <div style={{ width: '65%', maxWidth: '390px', position: 'relative', zIndex: 1 }}>
-        <BookCover config={cover} theme={theme} delay={12} />
+        <BookCover config={cover} theme={theme} delay={4} />
       </div>
 
       <div
@@ -57,8 +58,9 @@ export const SolutionScene: React.FC<SolutionSceneProps> = ({ config, cover, pri
       >
         <TypewriterText
           text={config.description}
-          delay={26}
-          speed={2.4}
+          delay={4}
+          durationInFrames={28}
+          effect="typewriter"
           color={theme.textColor}
           fontSize={28}
           fontWeight={500}

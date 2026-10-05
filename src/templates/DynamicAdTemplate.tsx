@@ -4,6 +4,7 @@ import { BenefitsScene } from '../components/BenefitsScene';
 import { CTAScene } from '../components/CTAScene';
 import { HookScene } from '../components/HookScene';
 import { SolutionScene } from '../components/SolutionScene';
+import { ClickImpact } from '../components/UI/ClickImpact';
 import { ProductAdConfig } from '../types/adConfig';
 
 interface DynamicAdTemplateProps {
@@ -17,7 +18,8 @@ export const DynamicAdTemplate: React.FC<DynamicAdTemplateProps> = ({ product })
   const hookDurationFrames = Math.round(3 * fps); // 0-3s
   const solutionDurationFrames = Math.round(6 * fps); // 3-9s
   const benefitsDurationFrames = Math.round(6 * fps); // 9-15s
-  const ctaDurationFrames = Math.round(5 * fps); // 15-20s
+  const ctaDurationFrames = Math.round(5 * fps);
+  const cutFrames = [hookDurationFrames, hookDurationFrames + solutionDurationFrames, hookDurationFrames + solutionDurationFrames + benefitsDurationFrames];
 
   return (
     <AbsoluteFill>
@@ -59,6 +61,11 @@ export const DynamicAdTemplate: React.FC<DynamicAdTemplateProps> = ({ product })
           />
         </Series.Sequence>
       </Series>
+      {cutFrames.map((cutFrame) => (
+        <Sequence key={cutFrame} from={cutFrame - 5} durationInFrames={20}>
+          <ClickImpact color={product.theme.primaryColor} />
+        </Sequence>
+      ))}
     </AbsoluteFill>
   );
 };

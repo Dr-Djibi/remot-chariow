@@ -15,6 +15,18 @@
   "pricing": {
     "badgeText": "Hacking · Pentest · Metasploit"
   },
+  "audio": {
+    "voiceover": {
+      "src": "audio/voix-off-fr.mp3",
+      "volume": 1
+    },
+    "soundEffects": [
+      { "src": "audio/impact.wav", "atSeconds": 0.4, "volume": 0.55 },
+      { "src": "audio/impact.wav", "atSeconds": 3, "volume": 0.48 },
+      { "src": "audio/transition.wav", "atSeconds": 9, "volume": 0.32 },
+      { "src": "audio/impact.wav", "atSeconds": 15, "volume": 0.48 }
+    ]
+  },
   "scenes": {
     "hook": {
       "hookText": "Le vrai hacking, c’est la maîtrise du test d’intrusion.",

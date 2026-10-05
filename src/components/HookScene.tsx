@@ -43,7 +43,8 @@ export const HookScene: React.FC<HookSceneProps> = ({ config, cover, theme }) =>
         <TypewriterText
           text={config.hookText}
           delay={18}
-          speed={3}
+          durationInFrames={24}
+          effect="typewriter"
           color={theme.textColor}
           fontSize={52}
           fontWeight={900}
@@ -53,8 +54,9 @@ export const HookScene: React.FC<HookSceneProps> = ({ config, cover, theme }) =>
         {config.subHookText && (
           <TypewriterText
             text={config.subHookText}
-            delay={36}
-            speed={4}
+            delay={28}
+            durationInFrames={22}
+            effect="word-rise"
             color={theme.accentColor}
             fontSize={30}
             fontWeight={700}
