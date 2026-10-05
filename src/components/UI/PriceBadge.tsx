@@ -47,7 +47,7 @@ export const PriceBadge: React.FC<PriceBadgeProps> = ({
       {pricing.badgeText && (
         <span
           style={{
-            fontSize: '18px',
+            fontSize: pricing.discountPrice ? '18px' : '22px',
             fontWeight: 'bold',
             letterSpacing: '1px',
             textTransform: 'uppercase',
@@ -57,29 +57,31 @@ export const PriceBadge: React.FC<PriceBadgeProps> = ({
           {pricing.badgeText}
         </span>
       )}
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
-        <span
-          style={{
-            fontSize: '42px',
-            fontWeight: '900',
-          }}
-        >
-          {pricing.discountPrice}
-          {pricing.currency}
-        </span>
-        {pricing.originalPrice && (
+      {pricing.discountPrice && (
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
           <span
             style={{
-              fontSize: '24px',
-              textDecoration: 'line-through',
-              opacity: 0.8,
+              fontSize: '42px',
+              fontWeight: '900',
             }}
           >
-            {pricing.originalPrice}
-            {pricing.currency}
+            {pricing.discountPrice}
+            {pricing.currency ?? ''}
           </span>
-        )}
-      </div>
+          {pricing.originalPrice && (
+            <span
+              style={{
+                fontSize: '24px',
+                textDecoration: 'line-through',
+                opacity: 0.8,
+              }}
+            >
+              {pricing.originalPrice}
+              {pricing.currency ?? ''}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 };

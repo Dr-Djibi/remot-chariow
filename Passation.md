@@ -1,42 +1,99 @@
-# 🚀 INSTRUCTIONS DÉVELOPPEUR : Générateur de Vidéos Publicitaires Remotion
+# Brief de création – Video Ads / Book Launch
 
-## 🎯 Mission de l'IA
-Tu es un **Développeur Full-Stack & Motion Designer Senior** expert en **React** et **Remotion**.
-Ta mission est de **coder l'intégralité du projet vidéo publicitaire** contenu dans ce dépôt GitHub. Tu dois créer le code source, les compositions, les animations, la gestion du timing et les composants de rendu de A à Z.
+## Objet
+Créer une vidéo publicitaire courte et percutante pour un livre intitulé :
 
----
+Hacking, test d’intrusion et Metasploit
 
-## 📐 Spécifications Techniques
-
-1. **Framework Vidéo :** [Remotion](https://www.remotion.dev/) (React pour la vidéo).
-2. **Langage :** TypeScript / React.
-3. **Formats Publicitaires Requis :**
-   * **Vertical (TikTok / Reels / Shorts / FB Stories) :** `1080 x 1920` (Ratio 9:16)
-   * **Carré (Facebook Feed / Instagram Feed) :** `1080 x 1080` (Ratio 1:1)
-4. **Framerate :** 30 FPS.
-5. **Durée Standard :** 15 à 30 secondes (paramétrable via des props).
+Le but est de positionner l’ouvrage comme un guide pratique pour comprendre la sécurité offensive, les vulnérabilités, les méthodes de test d’intrusion et l’usage de Metasploit dans un cadre légitime et encadré.
 
 ---
 
-## 📁 Architecture du Code à Créer
+## Positionnement du livre
+- Public visé : passionnés de cybersécurité, étudiants, pentesters, professionnels IT, équipes sécurité, responsables système
+- Angle marketing : pratique, technique, crédible, sérieux
+- Ton : pro, futuriste, cyber, dynamique, sans lourdeur académique
+- Message clé : comprendre les failles, tester les défenses, renforcer la sécurité
 
-Tu dois structurer le code dans le dossier `src/` comme suit :
+---
 
-```text
-src/
-├── Root.tsx                      <-- Enregistrement des Compositions Remotion (Vertical & Carré)
-├── types/
-│   └── adConfig.ts               <-- Interfaces TypeScript pour les données du produit et des scènes
-├── components/
-│   ├── HookScene.tsx             <-- Scène 1 : Accroche / Problème (0-3s)
-│   ├── SolutionScene.tsx         <-- Scène 2 : Présentation Produit (3-12s)
-│   ├── BenefitsScene.tsx         <-- Scène 3 : Points Forts / Preuves (12-20s)
-│   ├── CTAScene.tsx              <-- Scène 4 : Appel à l'action / Offre (20-30s)
-│   └── UI/
-│       ├── TextOverlay.tsx       <-- Textes animés avec ressort (spring/interpolate)
-│       ├── PriceBadge.tsx        <-- Badge de promotion animé
-│       └── ProductImage.tsx     <-- Affichage dynamisé des visuels
-├── templates/
-│   └── DynamicAdTemplate.tsx     <-- Séquenceur principal (Series / AbsoluteFill)
-└── data/
-    └── currentProduct.json       <-- Données JSON du produit actuellement injecté
+## Message principal
+La sécurité ne se résume pas à la prévention : elle passe aussi par la compréhension des vulnérabilités, des méthodes d’attaque et des bonnes pratiques de test d’intrusion.
+
+Le livre propose une approche pédagogique, concrète et encadrée pour découvrir :
+- le hacking éthique
+- le pentest et les tests d’intrusion
+- la logique des vulnérabilités
+- l’usage de Metasploit de manière responsable
+
+---
+
+## Direction artistique
+- Palette : noir profond, vert cyber, beige métallique, orange chaud
+- Style visuel : interfaces techniques, scanlines, effet de terminal, fond animé, particules, éléments 3D subtils
+- Typographie : forte, lisible, inspirée des dashboards cyber et de la surveillance
+- Mouvements : typewriter, glow, transitions fluides, animations de texte avec impact
+
+---
+
+## Structure de la vidéo
+### 1. Hook (0–3s)
+Accroche forte sur la menace et la préparation.
+Exemple :
+« Le vrai hacking, c’est la maîtrise du test d’intrusion. »
+
+### 2. Solution (3–9s)
+Présenter le livre comme un guide pratique de cybersécurité. 
+Exemple :
+« Comprendre les failles avant qu’elles ne soient exploitées. »
+
+### 3. Benefits (9–15s)
+Mettre en avant les bénéfices : apprendre les vulnérabilités, maîtriser Metasploit, renforcer la sécurité.
+
+### 4. CTA (15–20s)
+Appel à l’action fort pour faire découvrir le livre.
+Exemple :
+« Découvrir le livre »
+
+---
+
+## Proposition de voix off
+« Le hacking n’est pas juste une technique de casse. C’est aussi un moyen de comprendre les failles, de tester les défenses et de renforcer la cybersécurité. Dans ce guide, vous découvrirez les bases du test d’intrusion, les méthodes de sécurité offensive et l’utilisation de Metasploit dans un environnement maîtrisé et encadré. Apprenez à repérer les vulnérabilités avant qu’elles ne soient exploitées. »
+
+---
+
+## Fichiers audio
+Les pistes audio sont optionnelles mais recommandées. Le format attendu est compatible avec Remotion via `public/audio/`.
+
+Exemple de configuration :
+
+```json
+{
+  "audio": {
+    "voiceover": { "src": "audio/voix-off-fr.mp3", "volume": 1 },
+    "soundEffects": [
+      { "src": "audio/impact.mp3", "atSeconds": 0.2, "volume": 0.35 },
+      { "src": "audio/transition.mp3", "atSeconds": 9, "volume": 0.25 }
+    ]
+  }
+}
+```
+
+---
+
+## Livrables demandés
+- 1 spot vertical 9:16
+- 1 spot carré 1:1
+- durée : 20 secondes
+- rendu final en MP4
+- animation premium : typewriter, glow, grilles, direction artistique cyber
+- support audio facultatif mais fortement recommandé
+
+---
+
+## Commandes
+- `npm start` : preview local
+- `npm run render:vertical` : export vertical
+- `npm run render:square` : export carré
+
+Le projet est prêt pour une version plus premium orientée cybersécurité / hacking / test d’intrusion avec Metasploit.

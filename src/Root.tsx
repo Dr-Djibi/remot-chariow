@@ -14,7 +14,7 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       {/* Format Vertical (TikTok / Reels / Shorts / FB Stories) - 1080 x 1920 (9:16) */}
-      <Composition
+      <Composition<any, { product: ProductAdConfig }>
         id="Vertical"
         component={DynamicAdTemplate}
         durationInFrames={durationInFrames}
@@ -27,7 +27,7 @@ export const RemotionRoot: React.FC = () => {
       />
 
       {/* Format Carré (Facebook Feed / Instagram Feed) - 1080 x 1080 (1:1) */}
-      <Composition
+      <Composition<any, { product: ProductAdConfig }>
         id="Square"
         component={DynamicAdTemplate}
         durationInFrames={durationInFrames}

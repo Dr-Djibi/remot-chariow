@@ -1,0 +1,53 @@
+{
+  "brandName": "Hacking & Test d'intrusion",
+  "cover": {
+    "label": "LIVRE PRATIQUE",
+    "title": "HACKING, TEST D’INTRUSION",
+    "subtitle": "ET METASPLOIT",
+    "author": "Le guide pour comprendre, tester et sécuriser"
+  },
+  "theme": {
+    "backgroundColor": "#101914",
+    "primaryColor": "#C5F36A",
+    "accentColor": "#E89A5A",
+    "textColor": "#F3F5EE"
+  },
+  "pricing": {
+    "badgeText": "Hacking · Pentest · Metasploit"
+  },
+  "scenes": {
+    "hook": {
+      "hookText": "Le vrai hacking, c’est la maîtrise du test d’intrusion.",
+      "subHookText": "Apprenez à repérer les vulnérabilités, sans jamais sortir du cadre légal."
+    },
+    "solution": {
+      "title": "Comprendre les failles avant qu’elles ne soient exploitées",
+      "description": "Un guide pratique pour découvrir les méthodes de cybersécurité, l’attaque éthique et l’outil Metasploit."
+    },
+    "benefits": {
+      "title": "Les compétences qui changent la donne",
+      "benefits": [
+        {
+          "id": "fundamentals",
+          "title": "Mieux comprendre les vulnérabilités",
+          "description": "Analysez les étapes du pentest et la logique d’une intrusion autorisée."
+        },
+        {
+          "id": "metasploit",
+          "title": "Maîtriser Metasploit",
+          "description": "Découvrez comment utiliser l’outil avec méthode et rigueur en environnement contrôlé."
+        },
+        {
+          "id": "defense",
+          "title": "Renforcer la sécurité",
+          "description": "Transformez les observations en correctifs et bonnes pratiques défensives."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "La sécurité s’apprend avec la bonne méthode.",
+      "subheadline": "Un guide pratique pour comprendre le hacking éthique et la sécurité offensive.",
+      "buttonText": "Découvrir le livre"
+    }
+  }
+}

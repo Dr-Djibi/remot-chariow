@@ -1,5 +1,23 @@
 {
+  "scripts": {
+    "start": "remotion studio src/index.ts",
+    "render:vertical": "remotion render src/index.ts Vertical out/vertical.mp4",
+    "render:square": "remotion render src/index.ts Square out/square.mp4"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.18.0",
+    "@remotion/three": "^4.0.532",
+    "@remotion/transitions": "4.0.532",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0",
+    "three": "^0.186.1"
+  },
   "devDependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.186.0",
     "typescript": "^7.0.2"
   }
 }

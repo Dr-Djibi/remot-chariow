@@ -1,18 +1,21 @@
 import React from 'react';
 import { AbsoluteFill } from 'remotion';
-import { HookSceneConfig, ThemeConfig } from '../types/adConfig';
-import { ProductImage } from './UI/ProductImage';
-import { TextOverlay } from './UI/TextOverlay';
+import { CoverConfig, HookSceneConfig, ThemeConfig } from '../types/adConfig';
+import { BackgroundFX } from './UI/BackgroundFX';
+import { BookCover } from './UI/BookCover';
+import { TypewriterText } from './UI/TypewriterText';
 
 interface HookSceneProps {
   config: HookSceneConfig;
+  cover: CoverConfig;
   theme: ThemeConfig;
 }
 
-export const HookScene: React.FC<HookSceneProps> = ({ config, theme }) => {
+export const HookScene: React.FC<HookSceneProps> = ({ config, cover, theme }) => {
   return (
     <AbsoluteFill
       style={{
+        position: 'relative',
         backgroundColor: theme.backgroundColor,
         display: 'flex',
         flexDirection: 'column',
@@ -20,13 +23,11 @@ export const HookScene: React.FC<HookSceneProps> = ({ config, theme }) => {
         justifyContent: 'center',
         padding: '60px 40px',
         gap: '40px',
+        overflow: 'hidden',
       }}
     >
-      {config.imageUrl && (
-        <div style={{ width: '80%', maxWidth: '500px' }}>
-          <ProductImage src={config.imageUrl} delay={0} />
-        </div>
-      )}
+      <BackgroundFX accentColor={theme.accentColor} primaryColor={theme.primaryColor} backgroundColor={theme.backgroundColor} />
+      <BookCover config={cover} theme={theme} delay={4} />
 
       <div
         style={{
@@ -35,23 +36,29 @@ export const HookScene: React.FC<HookSceneProps> = ({ config, theme }) => {
           alignItems: 'center',
           gap: '20px',
           maxWidth: '90%',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
-        <TextOverlay
+        <TypewriterText
           text={config.hookText}
-          delay={10}
+          delay={18}
+          speed={3}
           color={theme.textColor}
           fontSize={52}
           fontWeight={900}
+          maxWidth="90%"
         />
 
         {config.subHookText && (
-          <TextOverlay
+          <TypewriterText
             text={config.subHookText}
-            delay={20}
+            delay={36}
+            speed={4}
             color={theme.accentColor}
-            fontSize={32}
-            fontWeight={600}
+            fontSize={30}
+            fontWeight={700}
+            maxWidth="88%"
           />
         )}
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Series, useVideoConfig } from 'remotion';
+import { AbsoluteFill, Audio, Sequence, Series, staticFile, useVideoConfig } from 'remotion';
 import { BenefitsScene } from '../components/BenefitsScene';
 import { CTAScene } from '../components/CTAScene';
 import { HookScene } from '../components/HookScene';
@@ -20,31 +20,45 @@ export const DynamicAdTemplate: React.FC<DynamicAdTemplateProps> = ({ product })
   const ctaDurationFrames = Math.round(5 * fps); // 15-20s
 
   return (
-    <Series>
-      <Series.Sequence durationInFrames={hookDurationFrames}>
-        <HookScene config={product.scenes.hook} theme={product.theme} />
-      </Series.Sequence>
-
-      <Series.Sequence durationInFrames={solutionDurationFrames}>
-        <SolutionScene
-          config={product.scenes.solution}
-          pricing={product.pricing}
-          theme={product.theme}
+    <AbsoluteFill>
+      {product.audio?.voiceover && (
+        <Audio
+          src={staticFile(product.audio.voiceover.src)}
+          volume={product.audio.voiceover.volume ?? 1}
         />
-      </Series.Sequence>
+      )}
+      {product.audio?.soundEffects?.map((effect, index) => (
+        <Sequence key={`${effect.src}-${index}`} from={Math.round(effect.atSeconds * fps)}>
+          <Audio src={staticFile(effect.src)} volume={effect.volume ?? 1} />
+        </Sequence>
+      ))}
+      <Series>
+        <Series.Sequence durationInFrames={hookDurationFrames}>
+          <HookScene config={product.scenes.hook} cover={product.cover} theme={product.theme} />
+        </Series.Sequence>
 
-      <Series.Sequence durationInFrames={benefitsDurationFrames}>
-        <BenefitsScene config={product.scenes.benefits} theme={product.theme} />
-      </Series.Sequence>
+        <Series.Sequence durationInFrames={solutionDurationFrames}>
+          <SolutionScene
+            config={product.scenes.solution}
+            cover={product.cover}
+            pricing={product.pricing}
+            theme={product.theme}
+          />
+        </Series.Sequence>
 
-      <Series.Sequence durationInFrames={ctaDurationFrames}>
-        <CTAScene
-          config={product.scenes.cta}
-          pricing={product.pricing}
-          theme={product.theme}
-          brandName={product.brandName}
-        />
-      </Series.Sequence>
-    </Series>
+        <Series.Sequence durationInFrames={benefitsDurationFrames}>
+          <BenefitsScene config={product.scenes.benefits} theme={product.theme} />
+        </Series.Sequence>
+
+        <Series.Sequence durationInFrames={ctaDurationFrames}>
+          <CTAScene
+            config={product.scenes.cta}
+            pricing={product.pricing}
+            theme={product.theme}
+            brandName={product.brandName}
+          />
+        </Series.Sequence>
+      </Series>
+    </AbsoluteFill>
   );
 };
