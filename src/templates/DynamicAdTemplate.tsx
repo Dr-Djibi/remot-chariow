@@ -14,12 +14,21 @@ interface DynamicAdTemplateProps {
 export const DynamicAdTemplate: React.FC<DynamicAdTemplateProps> = ({ product }) => {
   const { fps } = useVideoConfig();
 
-  // Durées des scènes en secondes (total 20 secondes / 600 frames à 30fps)
-  const hookDurationFrames = Math.round(3 * fps); // 0-3s
-  const solutionDurationFrames = Math.round(6 * fps); // 3-9s
-  const benefitsDurationFrames = Math.round(6 * fps); // 9-15s
-  const ctaDurationFrames = Math.round(5 * fps);
-  const cutFrames = [hookDurationFrames, hookDurationFrames + solutionDurationFrames, hookDurationFrames + solutionDurationFrames + benefitsDurationFrames];
+  const scenePlan = [
+    { name: 'hook', durationInFrames: Math.round(5.8 * fps), accent: product.theme.primaryColor },
+    { name: 'solution', durationInFrames: Math.round(6.2 * fps), accent: product.theme.accentColor },
+    { name: 'benefits', durationInFrames: Math.round(7.2 * fps), accent: '#F3F5EE' },
+    { name: 'cta', durationInFrames: Math.round(2.8 * fps), accent: product.theme.primaryColor },
+  ];
+
+  const cumulativeFrames: number[] = [];
+  let cursor = 0;
+  scenePlan.forEach((scene) => {
+    cumulativeFrames.push(cursor);
+    cursor += scene.durationInFrames;
+  });
+
+  const cutFrames = cumulativeFrames.slice(1);
 
   return (
     <AbsoluteFill>
@@ -34,12 +43,13 @@ export const DynamicAdTemplate: React.FC<DynamicAdTemplateProps> = ({ product })
           <Audio src={staticFile(effect.src)} volume={effect.volume ?? 1} />
         </Sequence>
       ))}
+
       <Series>
-        <Series.Sequence durationInFrames={hookDurationFrames}>
+        <Series.Sequence durationInFrames={scenePlan[0].durationInFrames}>
           <HookScene config={product.scenes.hook} cover={product.cover} theme={product.theme} />
         </Series.Sequence>
 
-        <Series.Sequence durationInFrames={solutionDurationFrames}>
+        <Series.Sequence durationInFrames={scenePlan[1].durationInFrames}>
           <SolutionScene
             config={product.scenes.solution}
             cover={product.cover}
@@ -48,11 +58,11 @@ export const DynamicAdTemplate: React.FC<DynamicAdTemplateProps> = ({ product })
           />
         </Series.Sequence>
 
-        <Series.Sequence durationInFrames={benefitsDurationFrames}>
+        <Series.Sequence durationInFrames={scenePlan[2].durationInFrames}>
           <BenefitsScene config={product.scenes.benefits} theme={product.theme} />
         </Series.Sequence>
 
-        <Series.Sequence durationInFrames={ctaDurationFrames}>
+        <Series.Sequence durationInFrames={scenePlan[3].durationInFrames}>
           <CTAScene
             config={product.scenes.cta}
             pricing={product.pricing}
@@ -61,9 +71,10 @@ export const DynamicAdTemplate: React.FC<DynamicAdTemplateProps> = ({ product })
           />
         </Series.Sequence>
       </Series>
-      {cutFrames.map((cutFrame) => (
-        <Sequence key={cutFrame} from={cutFrame - 5} durationInFrames={20}>
-          <ClickImpact color={product.theme.primaryColor} />
+
+      {cutFrames.map((cutFrame, index) => (
+        <Sequence key={`${cutFrame}-${index}`} from={cutFrame - 5} durationInFrames={20}>
+          <ClickImpact color={scenePlan[index + 1]?.accent ?? product.theme.primaryColor} />
         </Sequence>
       ))}
     </AbsoluteFill>

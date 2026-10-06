@@ -17,48 +17,50 @@
   },
   "audio": {
     "voiceover": {
-      "src": "audio/voix-off-fr.mp3",
+      "src": "audio/femme-afrique-2026-10-06-15-37-Le-hacking-n'est-pas-juste-une-technique-de-cass.mp3",
       "volume": 1
     },
     "soundEffects": [
-      { "src": "audio/impact.wav", "atSeconds": 0.4, "volume": 0.55 },
-      { "src": "audio/impact.wav", "atSeconds": 3, "volume": 0.48 },
-      { "src": "audio/transition.wav", "atSeconds": 9, "volume": 0.32 },
-      { "src": "audio/impact.wav", "atSeconds": 15, "volume": 0.48 }
+      { "src": "audio/impact.wav", "atSeconds": 0.5, "volume": 0.75 },
+      { "src": "audio/impact.wav", "atSeconds": 3.1, "volume": 0.72 },
+      { "src": "audio/transition.wav", "atSeconds": 6.8, "volume": 0.5 },
+      { "src": "audio/impact.wav", "atSeconds": 10.6, "volume": 0.7 },
+      { "src": "audio/transition.wav", "atSeconds": 14.9, "volume": 0.5 },
+      { "src": "audio/impact.wav", "atSeconds": 18.2, "volume": 0.78 }
     ]
   },
   "scenes": {
     "hook": {
-      "hookText": "Le vrai hacking, c’est la maîtrise du test d’intrusion.",
-      "subHookText": "Apprenez à repérer les vulnérabilités, sans jamais sortir du cadre légal."
+      "hookText": "Le hacking n’est pas juste une technique de casse.",
+      "subHookText": "C’est comprendre les failles avant qu’elles ne deviennent une menace."
     },
     "solution": {
-      "title": "Comprendre les failles avant qu’elles ne soient exploitées",
-      "description": "Un guide pratique pour découvrir les méthodes de cybersécurité, l’attaque éthique et l’outil Metasploit."
+      "title": "Comprendre le test d’intrusion pour sécuriser avant l’attaque",
+      "description": "Un guide pratique pour apprendre le pentest, la logique des vulnérabilités et l’usage responsable de Metasploit."
     },
     "benefits": {
       "title": "Les compétences qui changent la donne",
       "benefits": [
         {
-          "id": "fundamentals",
-          "title": "Mieux comprendre les vulnérabilités",
-          "description": "Analysez les étapes du pentest et la logique d’une intrusion autorisée."
+          "id": "understand",
+          "title": "Identifier les vulnérabilités",
+          "description": "Apprenez à repérer les failles avant qu’elles ne soient exploitées."
         },
         {
           "id": "metasploit",
           "title": "Maîtriser Metasploit",
-          "description": "Découvrez comment utiliser l’outil avec méthode et rigueur en environnement contrôlé."
+          "description": "Comprenez l’outil avec méthode, rigueur et esprit de sécurité."
         },
         {
           "id": "defense",
-          "title": "Renforcer la sécurité",
-          "description": "Transformez les observations en correctifs et bonnes pratiques défensives."
+          "title": "Renforcer la cybersécurité",
+          "description": "Transformez les connaissances en pratiques concrètes de défense."
         }
       ]
     },
     "cta": {
-      "headline": "La sécurité s’apprend avec la bonne méthode.",
-      "subheadline": "Un guide pratique pour comprendre le hacking éthique et la sécurité offensive.",
+      "headline": "Découvre le livre et passe du simple intérêt à la vraie maîtrise.",
+      "subheadline": "Une méthode claire pour comprendre, tester et sécuriser.",
       "buttonText": "Découvrir le livre"
     }
   }

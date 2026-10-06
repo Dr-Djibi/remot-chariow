@@ -9,11 +9,11 @@ export const ClickImpact: React.FC<ClickImpactProps> = ({ color }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const cursor = spring({ frame: frame - 1, fps, config: { damping: 12, stiffness: 240 } });
-  const ripple = interpolate(frame, [1, 14], [0.18, 2.8], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const rippleOpacity = interpolate(frame, [1, 5, 14], [0, 0.85, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const flashOpacity = interpolate(frame, [0, 1, 3, 8], [0, 0.16, 0.05, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const wipeX = interpolate(frame, [0, 3, 5, 12, 18], [-130, -130, 0, 130, 130], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const wipeOpacity = interpolate(frame, [0, 2, 5, 11, 15], [0, 0.55, 0.68, 0.28, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const ripple = interpolate(frame, [1, 12], [0.2, 3.4], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const rippleOpacity = interpolate(frame, [1, 4, 12], [0, 1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const flashOpacity = interpolate(frame, [0, 1, 2.5, 8], [0, 0.25, 0.1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const wipeX = interpolate(frame, [0, 2, 4, 10, 16], [-170, -170, 0, 160, 160], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const wipeOpacity = interpolate(frame, [0, 2, 4, 9, 14], [0, 0.7, 0.9, 0.32, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
 
   return (
     <AbsoluteFill style={{ zIndex: 30, pointerEvents: 'none' }}>

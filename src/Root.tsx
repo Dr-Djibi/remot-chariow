@@ -8,7 +8,7 @@ const productData = currentProductData as ProductAdConfig;
 
 export const RemotionRoot: React.FC = () => {
   const fps = 30;
-  const totalDurationInSeconds = 20; // 3s hook + 6s solution + 6s benefits + 5s cta
+  const totalDurationInSeconds = 22; // la voix off est la source de vérité, donc la durée globale suit la VO réelle
   const durationInFrames = totalDurationInSeconds * fps;
 
   return (
