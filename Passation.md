@@ -32,7 +32,7 @@ Le livre n’est donc pas seulement un manuel : il est une base de compétences 
 
 ---
 
-## Principe de narration : VO comme source de vérité
+## Principe de narration visé : VO comme source de vérité
 La vidéo doit être structurée autour de la voix off, et non autour d’un timing arbitraire.
 
 Règle fondamentale :
@@ -41,7 +41,9 @@ Règle fondamentale :
 - chaque pause correspond à un changement de plan ou d’effet
 - le visuel répond à la phrase parlée, pas à un timing fixé
 
-Le timing global suit la durée réelle de la narration. Si la VO dure 22 secondes, la vidéo doit durer 22 secondes.
+À terme, le timing global doit suivre la durée réelle de la narration. Si la VO dure 22 secondes, la vidéo doit durer 22 secondes.
+
+**État actuel au 6 octobre 2026 :** cet objectif n’est pas encore entièrement implémenté. La composition Remotion est actuellement fixée à 22 secondes et le template répartit ce temps en quatre durées de scène prédéfinies. Il n’y a pas encore de détection automatique des phrases ou des silences dans la voix off.
 
 ---
 
@@ -65,18 +67,19 @@ La vidéo doit fonctionner comme une montée de tension narrative, pas comme une
 ## Direction motion design premium
 Le motion design doit être pensé comme un système de mise en scène, pas comme des effets isolés.
 
-### Composants recommandés
+### Direction visuelle et composants
 - fond cyber animé
 - scanlines et grille de fond
 - particules / points / lignes de signal
 - glow sur mots-clés
 - transitions flash / wipe / blur
 - overlays de texte rejoints au rythme de la VO
-- éléments 3D légers ou HUD cyber via @remotion/three
-- bruit procédural via @remotion/noise
-- audio-reactive motion via @remotion/media-utils
-- sous-titres synchronisés via @remotion/captions
-- animations vectorielles / lignes via @remotion/paths
+- éléments 3D légers et HUD cyber via `@remotion/three` (intégré)
+- bruit procédural via `@remotion/noise` (à évaluer, non intégré)
+- audio-reactive motion via `@remotion/media-utils` (à évaluer, non intégré)
+- sous-titres synchronisés via `@remotion/captions` (à évaluer, non intégré)
+- animations vectorielles / lignes via `@remotion/paths` (à évaluer, non intégré)
+- composants d’interface au style inspiré de shadcn/ui, réalisés en styles React/CSS; la bibliothèque shadcn/ui n’est pas installée
 
 ### Ce qu’il faut éviter
 - machine à écrire longuement comme unique moteur visuel
@@ -123,7 +126,7 @@ Exemple de structure :
 
 ---
 
-## Livrables
+## Livrables visés
 - 1 spot vertical 9:16
 - 1 spot carré 1:1
 - durée : calibrée sur la voix off réelle
@@ -140,6 +143,38 @@ Exemple de structure :
 
 ---
 
-## Conclusion
+## Conclusion créative
 L’objectif n’est pas de faire “une vidéo technique avec du texte animé”.
 L’objectif est de faire une publicité immersive, cyber, narrativement forte et visuellement premium, où la voix off guide chaque décision de montage, et où le design soutient la gravité du message.
+
+---
+
+## Passation de fin de journée — 6 octobre 2026
+
+### Réalisé aujourd’hui
+- Refonte des scènes Hook, Solution, Benefits et CTA avec fonds cyber animés, HUD, éléments 3D et mouvements plus affirmés.
+- CTA retravaillé avec un bouton plus visible et des éléments graphiques de signal.
+- Ajout de l’option `whiteSpace` à `TypewriterText` et réglage du titre du CTA pour rester sur une ligne.
+- Brief et contenu produit recentrés sur le livre de hacking éthique, le pentest et Metasploit.
+- Export vertical récent généré dans `out/vertical.mp4` (environ 14,5 MB). Le typecheck `npx tsc --noEmit` a réussi.
+
+### État technique
+- Composition Remotion : 30 fps, 1080 × 1920 vertical et 1080 × 1080 carré.
+- Durée déclarée dans `src/Root.tsx` : 22 secondes.
+- Durées de scènes dans `src/templates/DynamicAdTemplate.tsx` : 5,8 s / 6,2 s / 7,2 s / 2,8 s, soit 22 s au total.
+- Voix off et effets sonores configurés depuis `src/data/currentProduct.json`.
+- `@remotion/three` et Three.js sont présents. Le warning de dépréciation `THREE.Clock` n’a pas empêché l’export vertical.
+- Le fichier `out/square.mp4` existe, mais aucun nouvel export carré n’a été vérifié aujourd’hui après les dernières modifications visuelles.
+
+### À reprendre
+1. Mesurer la durée réelle de la voix off avec un outil disponible dans l’environnement (FFmpeg/ffprobe n’y était pas installé lors de la vérification).
+2. Faire dépendre la durée des compositions et des scènes de la durée réelle de la VO; implémenter ensuite un découpage par phrases/silences ou fournir des timecodes éditables.
+3. Vérifier le cadrage du texte sur une ligne dans les deux formats; `nowrap` peut déborder si le titre est plus large que le cadre.
+4. Régénérer et contrôler les exports vertical et carré après la prochaine passe.
+
+### Commandes de reprise
+- `npx tsc --noEmit` : vérification TypeScript
+- `npm run render:vertical -- --overwrite` : rendu vertical
+- `npm run render:square -- --overwrite` : rendu carré
+
+La session du 6 octobre se termine avec un rendu vertical exporté et un style visuel amélioré. Le montage réellement synchronisé phrase par phrase avec la VO reste le principal chantier ouvert; ne pas le présenter comme déjà livré.
